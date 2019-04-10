@@ -5,6 +5,7 @@ import Directions from './Component/Directions';
 import callApi from './utils/apiCaller';
 import CarMarker from './Component/CarMarker';
 import BusMarker from './Component/BusMarker';
+import Position from  './Component/Position'
 
 
 class Map extends Component {
@@ -23,8 +24,8 @@ class Map extends Component {
     this.loadData = this.loadData.bind(this);
   }
   componentDidMount(){
-    this.loadData();
-    setInterval(this.loadData, 20000);
+    //this.loadData();
+    //setInterval(this.loadData, 30000);
   }
 
   componentDidUpdate(){
@@ -104,7 +105,16 @@ class Map extends Component {
       </div>
     )
   }
-
+  showLocation(){
+    if(this.state.latitude){
+      return  <Position
+        lat={this.state.latitude}
+        lng={this.state.longitude}
+        map ={this.state.map}
+        maps = {this.state.maps}
+      />
+    }
+  }
   render () {
     return (
       <GoogleMapReact
@@ -115,7 +125,7 @@ class Map extends Component {
         onGoogleApiLoaded={({map, maps}) => this.onMapLoaded(map, maps)}>
         
         {this.state.mapsLoaded ? this.afterMapLoadChanges() : ''}
-
+        {this.showLocation()}
       </GoogleMapReact>
     )
   }
@@ -139,5 +149,4 @@ Map.defaultProps = {
   center: [47.367347, 8.5500025],
   zoom: 14
 }
-
 export default Map
