@@ -1,1 +1,1 @@
-export const API_URL = 'http://137.116.141.133'
+export const API_URL = 'https://testtracking.vn-sightseeing.com'
