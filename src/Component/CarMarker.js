@@ -10,7 +10,7 @@ export class CarMarker extends Component{
         if ((orientation>=345 && orientation<359) || (orientation>=0 && orientation<15)){
           iconCar = {
             url: "car0.png",
-            scaledSize: new google.maps.Size(20, 40)
+            
           };
         }else if (orientation>=15 && orientation<45) {
           iconCar = {
