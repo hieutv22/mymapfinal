@@ -24,8 +24,8 @@ class Map extends Component {
     this.loadData = this.loadData.bind(this);
   }
   componentDidMount(){
-    //this.loadData();
-    //setInterval(this.loadData, 30000);
+    this.loadData();
+    setInterval(this.loadData, 30000);
   }
 
   componentDidUpdate(){
