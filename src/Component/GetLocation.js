@@ -24,7 +24,7 @@ export class GetLocation extends Component{
           longitude: position.coords.longitude,
         })
       }, (error) => {
-        this.setState({ latitude: 'err-latitude', longitude: 'err-longitude' })
+        return;
       })
     }
 
@@ -33,11 +33,14 @@ export class GetLocation extends Component{
     const {map, maps} = this.props;
     const {latitude, longitude} = this.state;
     this.markerLocation && this.markerLocation.setMap(null);
-    this.markerLocation =   new maps.Marker({
+    if(latitude && longitude){
+       this.markerLocation =   new maps.Marker({
           name: 'Your position',
           position: {lat: latitude,lng: longitude},
           map: map
     })
+    }
+   
   }
   	render(){
       this.renderMarkerLocation();
