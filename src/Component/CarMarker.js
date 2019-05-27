@@ -21,7 +21,6 @@ export class CarMarker extends Component{
         this.setState({
             items : res.data
         });
-        console.log(res.data)
       });
 
     }
