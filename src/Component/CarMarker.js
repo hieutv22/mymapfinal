@@ -1,16 +1,38 @@
 import {Component} from 'react';
+import callApi from '.././utils/apiCaller';
 
 export class CarMarker extends Component{
-  shouldComponentUpdate(nextProps){
-    return this.props.items !== nextProps.items;
-  }
+    constructor (props) {
+      super(props)
+
+      this.state = {
+        items: []
+      }
+      this.markers = [];
+      this.loadData = this.loadData.bind(this);
+      this.loadData();
+    }
+    componentDidMount(){
+      setInterval(this.loadData, 30000);
+    }
+
+     loadData() {
+      callApi('api/tracking?router_id=1&sr_key=20190516VNS', 'GET', null).then(res =>{
+        this.setState({
+            items : res.data
+        });
+        console.log(res.data)
+      });
+
+    }
+  
     getIcon(orientation){
         const google=window.google;
         var iconCar = null;
         if ((orientation>=345 && orientation<359) || (orientation>=0 && orientation<15)){
           iconCar = {
             url: "car0.png",
-            
+            scaledSize: new google.maps.Size(20, 40)
           };
         }else if (orientation>=15 && orientation<45) {
           iconCar = {
@@ -71,18 +93,30 @@ export class CarMarker extends Component{
         return iconCar;
     }
     renderMarker(){
-        const {items, map, maps} = this.props;
+        const { map, maps} = this.props;
+        const { items } = this.state;
+        const vehicles = items.vehicles;
 
-        {items.map(item => (
-            new maps.Marker({
-                key: item.id_driver,
+        this.markers && (
+          this.markers.map(function(marker) {
+            marker.setMap(null);
+          }))
+        this.markers=[];
+
+        if(vehicles){
+           {vehicles.map((vehicle, index) => {
+            const lat = parseFloat(vehicle.x);
+            const lng = parseFloat(vehicle.y);
+            let marker = new maps.Marker({
+                key: vehicle.id_driver,
                 name: 'Your position',
-                position: {lat: item.lat,lng: item.lng},
-                icon: this.getIcon(item.orientation),
-                map : map
+                position: {lat: lat,lng: lng},
+                icon: this.getIcon(vehicle.orientation),
             })
-            
-        ))}
+            marker.setMap(map)
+            this.markers.push(marker);
+          })}
+        }
     }
 
     render(){

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import GoogleMap from 'google-map-react';
 import Polyline  from './Component/Polyline';
 import Directions from './Component/Directions';
 import callApi from './utils/apiCaller';
 import CarMarker from './Component/CarMarker';
 import BusMarker from './Component/BusMarker';
-import Position from  './Component/Position'
+import Position from  './Component/Position';
+import GetLocation from './Component/GetLocation'
 
 
 class Map extends Component {
@@ -17,19 +18,17 @@ class Map extends Component {
       map: null,
       maps: null,
       items: [],
-      latitude: '',
-      longitude: '',
     }
-    this.getMyLocation = this.getMyLocation.bind(this)
-    this.loadData = this.loadData.bind(this);
+    //this.getMyLocation = this.getMyLocation.bind(this)
+    //this.loadData = this.loadData.bind(this);
   }
   componentDidMount(){
-    this.loadData();
-    setInterval(this.loadData, 30000);
+    //this.loadData();
+    //setInterval(this.loadData, 30000);
   }
 
   componentDidUpdate(){
-    this.getMyLocation();
+    //this.getMyLocation();
   }
 
   getMyLocation() {
@@ -49,7 +48,7 @@ class Map extends Component {
   }
 
   loadData() {
-    callApi('api/coordinates', 'GET', null).then(res =>{
+    callApi('api/tracking?router_id=1&sr_key=20190516VNS', 'GET', null).then(res =>{
       this.setState({
           items : res.data
       });
@@ -93,40 +92,41 @@ class Map extends Component {
           markers={this.props.markers}
         />
 
-        <CarMarker
-          items={this.state.items}
-          map={this.state.map}
-          maps={this.state.maps}
-        />
+        
         <BusMarker 
           map ={this.state.map}
           maps = {this.state.maps}
         />
+        {this.showLocation()}
       </div>
     )
   }
   showLocation(){
-    if(this.state.latitude){
-      return  <Position
-        lat={this.state.latitude}
-        lng={this.state.longitude}
+      return  <GetLocation
         map ={this.state.map}
         maps = {this.state.maps}
       />
-    }
   }
   render () {
     return (
-      <GoogleMapReact
-        bootstrapURLKeys={{key: 'AIzaSyDc2L7RMA_qzBVxIMKD1z6-FfMdOs32Vmc'}}
+      <>
+      <GoogleMap
+        bootstrapURLKeys={{key: 'AIzaSyDc2L7RMA_qzBVxIMKD1z6-FfMdOs32Vmc',
+                          libraries: ['places', 'drawing']}}
         style={{height: '100%', width: '100%'}}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
+        yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({map, maps}) => this.onMapLoaded(map, maps)}>
         
         {this.state.mapsLoaded ? this.afterMapLoadChanges() : ''}
-        {this.showLocation()}
-      </GoogleMapReact>
+        
+      </GoogleMap>
+      {this.state.mapsLoaded && (<CarMarker
+            map={this.state.map}
+            maps={this.state.maps}
+        />)}
+      </>
     )
   }
 }
