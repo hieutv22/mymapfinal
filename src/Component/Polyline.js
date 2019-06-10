@@ -142,7 +142,7 @@ export class Polyline extends Component{
         let nonGeodesicPolyline = new maps.Polyline({
             path: paths,
             geodesic: false,
-            strokeColor: "#ff2527",
+            strokeColor: "#22519F",
             strokeOpacity: 0.95,
             strokeWeight: 3.7,
           })
