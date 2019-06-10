@@ -147,7 +147,7 @@ export class Directions extends Component{
             let directionPolyline = new maps.Polyline({
                 path: symbolPath[i],
                 geodesic: false,
-                strokeColor: "#ff2527",
+                strokeColor: "#22519F",
                 strokeOpacity: 0.95,
                 strokeWeight: 3,
                 icons: [{
