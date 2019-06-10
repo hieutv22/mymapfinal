@@ -44,15 +44,15 @@ export default class BusMarker extends Component {
                             break;
                     case 4: this.infowindow.setContent('Chùa Trấn Quốc');
                             break;
-                    case 5: this.infowindow.setContent('Lăng Chủ Tịch');
+                    case 5: this.infowindow.setContent('Lăng Chủ Tịch Hồ Chí Minh');
                             break;
-                    case 6: this.infowindow.setContent('Văn Miếu');
+                    case 6: this.infowindow.setContent('Văn Miếu Quốc Tử Giám');
                             break;
                     case 7: this.infowindow.setContent('Nhà tù Hỏa Lò');
                             break;
                     case 8: this.infowindow.setContent('Nhà thờ Lớn');
                             break;
-                    case 9: this.infowindow.setContent('Bảo tàng Phụ Nữ');
+                    case 9: this.infowindow.setContent('Bảo tàng Phụ Nữ Việt Nam');
                             break;
                     case 10: this.infowindow.setContent('Nhà hát Lớn');
                             break; 
