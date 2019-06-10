@@ -34,27 +34,27 @@ export default class BusMarker extends Component {
 
             marker.addListener('click', ()=>{
                 switch(index){
-                    case 0: this.infowindow.setContent('Vườn hoa Con Cóc');
+                    case 0: this.infowindow.setContent('Vườn hoa Con Cóc - Frog Garden');
                             break;
-                    case 1: this.infowindow.setContent('Bảo tàng quân đội Việt Nam');
+                    case 1: this.infowindow.setContent('Bảo tàng quân đội - Military History Museum');
                             break;
-                    case 2: this.infowindow.setContent('Hoàng thành Thăng Long');
+                    case 2: this.infowindow.setContent('Hoàng thành Thăng Long - Imperial Citadel of Thang Long');
                             break;
-                    case 3: this.infowindow.setContent('Đền Quán Thánh');
+                    case 3: this.infowindow.setContent('Đền Quán Thánh - Quan Thanh Temple');
                             break;
-                    case 4: this.infowindow.setContent('Chùa Trấn Quốc');
+                    case 4: this.infowindow.setContent('Chùa Trấn Quốc - Tran Quoc Pagoda');
                             break;
-                    case 5: this.infowindow.setContent('Lăng Chủ Tịch Hồ Chí Minh');
+                    case 5: this.infowindow.setContent('Lăng Chủ Tịch Hồ Chí Minh - Ho Chi Minh Mausoleum');
                             break;
-                    case 6: this.infowindow.setContent('Văn Miếu Quốc Tử Giám');
+                    case 6: this.infowindow.setContent('Văn Miếu Quốc Tử Giám - Temple of Literature');
                             break;
-                    case 7: this.infowindow.setContent('Nhà tù Hỏa Lò');
+                    case 7: this.infowindow.setContent('Nhà tù Hỏa Lò - Hoa Lo Prison');
                             break;
-                    case 8: this.infowindow.setContent('Nhà thờ Lớn');
+                    case 8: this.infowindow.setContent('Nhà thờ Lớn - Ha Noi Cathedral');
                             break;
-                    case 9: this.infowindow.setContent('Bảo tàng Phụ Nữ Việt Nam');
+                    case 9: this.infowindow.setContent('Bảo tàng Phụ Nữ Việt Nam - Vietnam womens museum');
                             break;
-                    case 10: this.infowindow.setContent('Nhà hát Lớn');
+                    case 10: this.infowindow.setContent('Nhà hát Lớn - Ha Noi Opera House');
                             break; 
                     default:
                             break;
