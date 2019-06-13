@@ -31,31 +31,7 @@ class Map extends Component {
     //this.getMyLocation();
   }
 
-  getMyLocation() {
-    const location = window.navigator && window.navigator.geolocation
-    
-    if (location) {
-      location.getCurrentPosition((position) => {
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        })
-      }, (error) => {
-        this.setState({ latitude: 'err-latitude', longitude: 'err-longitude' })
-      })
-    }
-
-  }
-
-  loadData() {
-    callApi('api/tracking?router_id=1&sr_key=20190516VNS', 'GET', null).then(res =>{
-      this.setState({
-          items : res.data
-      });
-      console.log(res.data)
-    });
-
-  }
+  
 
   onMapLoaded (map, maps) {
     this.fitBounds(map, maps)

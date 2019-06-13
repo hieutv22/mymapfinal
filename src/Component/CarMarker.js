@@ -17,10 +17,11 @@ export class CarMarker extends Component{
     }
 
      loadData() {
-      callApi('api/tracking?router_id=1&sr_key=20190516VNS', 'GET', null).then(res =>{
+      callApi('api/tracking?router_id=1&sr_key=VNS190613ADADASDASD1SGD2FGHFWEAW0ERW9AAAQ', 'GET', null).then(res =>{
         this.setState({
             items : res.data
         });
+        console.log(res.data)
       });
 
     }

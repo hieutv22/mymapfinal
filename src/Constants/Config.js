@@ -1,1 +1,1 @@
-export const API_URL = 'https://paytest.vn-sightseeing.com'
+export const API_URL = 'https://payment.vn-sightseeing.com'
